@@ -15,11 +15,17 @@ Typically, you could achieve this with the following steps:
 7. Uncompress `tarball.tar.gz` on server B.
 8. Remove `tarball.tar.gz` from server B.
 
-This utility does this in one command:
+*Instead*, this utility does this in one command:  
 `./ncp.sh $userA@serverA $pathFrom $userB@serverB $pathTo`
 
-You can set up an alias `alias ncp=./$path/to/ncp.sh` and then you can use the even simpler command:
+You can set up an alias `alias ncp=/path/to/ncp.sh` and then you can use the even simpler command:  
 `ncp $userA@serverA $pathFrom $userB@serverB $pathTo`
 
+# Copy from/to single remote server 
+TBD. not implemented yet
 
+## From server to host:
+`ncp $user@server $pathFrom $pathToOnHost`
 
+## From host to server: 
+`ncp $pathFromOnHost $user@server $pathTo`
