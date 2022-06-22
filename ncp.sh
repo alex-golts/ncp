@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ($# -eq 4)  ||  ($# -eq 3   &&  "$1" != "/*") ]]; 
+if [[ ($# -eq 4)  ||  ($# -eq 3   &&  "$1" != /*) ]]; 
 then
     parent_dir_1=$(dirname "$2")
     base_dir_1=$(basename "$2")
@@ -11,7 +11,7 @@ then
     then
         scp $1:$parent_dir_1/tarball.tar.gz $3
         echo Extracting and removing compressed file from host...
-        tar -xvzf $3/tarball.tar.gz && rm -rf $3/tarball.tar.gz
+        cd $3 && tar -xvzf $3/tarball.tar.gz && rm -rf $3/tarball.tar.gz
     else
         scp $1:$parent_dir_1/tarball.tar.gz .
     fi
@@ -19,7 +19,7 @@ then
     ssh $1 "cd \"$parent_dir_1\" && rm -rf tarball.tar.gz"
 fi
 
-if [[ ($# -eq 4)  ||  ($# -eq 3   &&  "$1" == "/*") ]]; 
+if [[ ($# -eq 4)  ||  ($# -eq 3   &&  "$1" == /*) ]]; 
 then
     if [ $# -eq 4 ]; then
         echo Copying to $3...
